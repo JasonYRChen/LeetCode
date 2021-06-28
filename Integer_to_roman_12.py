@@ -1,14 +1,14 @@
 class Solution:
     def intToRoman(self, num: int) -> str:
-        symbols = [['I', 'V', 'X'], ['X', 'L', 'C'], ['C', 'D', 'M'], ['M']]
-        roman = ''
-        for n, symbol in zip(str(num)[::-1], symbols):
-            n = int(n)
-            if n != 0:
-                if n == 4:
+        symbols, roman = 'IVXLCDM', ''
+        for i, digit in enumerate(str(num)[::-1]):
+            symbol = symbols[2*i:2*i+3]
+            digit = int(digit)
+            if digit != 0:
+                if digit == 4:
                     roman = symbol[0] + symbol[1] + roman
-                elif n == 9:
+                elif digit == 9:
                     roman = symbol[0] + symbol[2] + roman
                 else:
-                    roman = symbol[0]*n + roman if n <= 3 else symbol[1] + symbol[0] * (n-5) + roman
+                    roman = symbol[0]*digit + roman if digit <= 3 else symbol[1] + symbol[0] * (digit-5) + roman
         return roman
