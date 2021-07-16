@@ -11,6 +11,25 @@ class Solution:
             solutions.append(solution)
         return solutions
 
+#    def dfs(self, n, board, result):
+#        if not board:
+#            yield result
+#        else:
+#            for num in board[0]:
+#                new_board = []
+#                result.append(num)
+#                for i in range(1, len(board)):
+#                    temp = board[i].copy()
+#                    if num in temp:
+#                        temp.remove(num)
+#                    if num + i in temp:
+#                        temp.remove(num + i)
+#                    if num - i in temp:
+#                        temp.remove(num - i)
+#                    new_board.append(temp)
+#                yield from self.dfs(n, new_board, result)
+#                result.pop()
+
     def dfs(self, n, board, result):
         if not board:
             yield result
@@ -19,14 +38,7 @@ class Solution:
                 new_board = []
                 result.append(num)
                 for i in range(1, len(board)):
-                    temp = board[i].copy()
-                    if num in temp:
-                        temp.remove(num)
-                    if num + i in temp:
-                        temp.remove(num + i)
-                    if num - i in temp:
-                        temp.remove(num - i)
-                    new_board.append(temp)
+                    new_board.append(board[i].copy())
+                    new_board[-1] -= {num, num+i, num-i}
                 yield from self.dfs(n, new_board, result)
                 result.pop()
-
