@@ -19,3 +19,16 @@ class Solution:
         right = self.construct(preorder, inorder, in_dict, pre_idx+1+in_idx-in_start, in_idx+1, in_end)
         node.left, node.right = left, right
         return node
+
+#    # Running time: O(n^2)
+#    def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
+#        if not preorder:
+#            return None
+# 
+#        node = TreeNode(preorder[0])
+#        index = inorder.index(preorder[0])
+#        left = self.buildTree(preorder[1:index+1], inorder[:index])
+#        right = self.buildTree(preorder[index+1:], inorder[index+1:])
+#        node.left, node.right = left, right
+#        return node 
+
