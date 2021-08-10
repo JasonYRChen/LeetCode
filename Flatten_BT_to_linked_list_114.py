@@ -13,7 +13,22 @@ class Solution:
         self.flatten(root.right)
         self.flatten(root.left)
         self.PREV, root.left, root.right = root, None, self.PREV
-        
+
+#    # Another solution: do the inverse of preorder
+#    def flatten(self, root: TreeNode) -> None:
+#        head = TreeNode()
+#	if root:
+#	    for node in self.inverse_preorder(root):
+#	        node.left = None
+#	        head.right, node.right = node, head.right
+#
+#    def inverse_preorder(self, node):
+#        if node.right:
+#            yield from self.inverse_preorder(node.right)
+#	if node.left:
+#	    yield from self.inverse_preorder(node.left)
+#	yield node
+
     
 #     def flatten(self, root: TreeNode) -> None:
 #         """
