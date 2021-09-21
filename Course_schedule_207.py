@@ -4,13 +4,10 @@ from collections import defaultdict
 class Solution:
     def canFinish(self, numCourses: int, prerequisites) -> bool:
         mapping = defaultdict(list)
-        visited = set()
         for course1, course2 in prerequisites:
             if course1 == course2:
                 return False
             
-            visited.add(course1)
-            visited.add(course2)
             if course1 in mapping or course2 not in mapping:
                 mapping[course1].append(course2)
             else:
@@ -20,7 +17,7 @@ class Solution:
                     mapping[course1] = mapping[course2]
                 else:
                     return False
-        return True if len(visited) == numCourses else False
+        return True
 
 
 if __name__ == '__main__':
